@@ -29,4 +29,4 @@ docker pull zhaozhongjin/nginx-php-laravel:latest
 docker run --name nginx-php-laravel -p 80:80 -d zhaozhongjin/nginx-php-laravel
 ```
 
-然后通过浏览器访问```http://\<docker_host\>:8080``` 
+然后通过浏览器访问```http://\<docker_host\>:80``` 
