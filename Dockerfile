@@ -31,6 +31,7 @@ RUN set -x && \
     freetype-devel \
     libmcrypt-devel \
     openssh-server \
+	bzip2-devel	\
     python-setuptools && \
 #Add user
 	mkdir -p /server/phpextini && \
@@ -74,6 +75,7 @@ RUN set -x && \
     --with-freetype-dir \
     --with-xmlrpc \
     --with-mhash \
+	--with-bz2	\
     --enable-fpm \
     --enable-xml \
     --enable-shmop \
