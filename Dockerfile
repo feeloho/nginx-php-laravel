@@ -5,6 +5,7 @@ ENV NGINX_VERSION 1.15.3
 ENV PHP_VERSION 7.2.9
 ENV PHP_PATH /server/php
 ENV NGINX_PATH /server/nginx
+ENV LOG_PATH /var/log
 
 RUN set -x && \
     yum install -y gcc \
@@ -101,9 +102,9 @@ RUN set -x && \
     make && make install && \
 #Install php-fpm
     cd /home/nginx-php/php-$PHP_VERSION && \
-    cp php.ini-production $PHP_PATH/etc/php.ini && \
-    cp $PHP_PATH/etc/php-fpm.conf.default $PHP_PATH/etc/php-fpm.conf && \
-    cp $PHP_PATH/etc/php-fpm.d/www.conf.default $PHP_PATH/etc/php-fpm.d/www.conf && \
+    #cp php.ini-production $PHP_PATH/etc/php.ini && \
+    #cp $PHP_PATH/etc/php-fpm.conf.default $PHP_PATH/etc/php-fpm.conf && \
+    #cp $PHP_PATH/etc/php-fpm.d/www.conf.default $PHP_PATH/etc/php-fpm.d/www.conf && \
 	cp /server/php/bin/php /usr/local/bin/php && \
 #Install composer
     curl -sS https://getcomposer.org/installer | $PHP_PATH/bin/php && \
@@ -122,7 +123,10 @@ RUN set -x && \
     mkdir -p --mode=0755 /var/cache/{yum,ldconfig} && \
     find /var/log -type f -delete && \
     rm -rf /home/nginx-php && \
+	mkdir -p $LOG_PATH/php && \
+	mkdir -p $LOG_PATH/nginx && \
 #Change Mod from webdir
+	chown -R www:www $LOG_PATH && \
     chown -R www:www /web-data
 
 #Create web folder
@@ -135,6 +139,9 @@ RUN set -x && \
 
 #Update nginx config
 ADD nginx.conf $NGINX_PATH/conf/
+ADD php.ini $PHP_PATH/etc/
+ADD php-fpm.conf $PHP_PATH/etc/
+ADD www.conf $PHP_PATH/etc/etc/php-fpm.d/
 
 #Set port
 EXPOSE 80 443
