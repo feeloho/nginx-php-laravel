@@ -141,7 +141,7 @@ RUN set -x && \
 ADD nginx.conf $NGINX_PATH/conf/
 ADD php.ini $PHP_PATH/etc/
 ADD php-fpm.conf $PHP_PATH/etc/
-ADD www.conf $PHP_PATH/etc/etc/php-fpm.d/
+ADD www.conf $PHP_PATH/etc/php-fpm.d/
 
 #Set port
 EXPOSE 80 443
