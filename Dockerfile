@@ -127,7 +127,8 @@ RUN set -x && \
 	mkdir -p $LOG_PATH/nginx && \
 #Change Mod from webdir
 	chown -R www:www $LOG_PATH && \
-    chown -R www:www /web-data
+    chown -R www:www /web-data && \
+	chmod 775 -R $LOG_PATH
 
 #Create web folder
 # WEB Folder: /web-data
