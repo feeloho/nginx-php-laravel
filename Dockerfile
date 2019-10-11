@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER bY feeloho <79534505@qq.com>
 
 ENV NGINX_VERSION 1.15.3
-ENV PHP_VERSION 7.2.9
+ENV PHP_VERSION 7.0.27
 ENV PHP_PATH /server/php
 ENV NGINX_PATH /server/nginx
 ENV LOG_PATH /var/log
@@ -41,7 +41,7 @@ RUN set -x && \
 #Download nginx & php
     mkdir -p /home/nginx-php && cd $_ && \
     curl -Lk http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | gunzip | tar x -C /home/nginx-php && \
-    curl -Lk http://php.net/distributions/php-$PHP_VERSION.tar.gz | gunzip | tar x -C /home/nginx-php && \
+    curl -Lk https://php.net/distributions/php-$PHP_VERSION.tar.gz | gunzip | tar x -C /home/nginx-php && \
 #Make install nginx
     cd /home/nginx-php/nginx-$NGINX_VERSION && \
     ./configure --prefix=$NGINX_PATH \
@@ -98,7 +98,8 @@ RUN set -x && \
     --disable-rpath \
     --enable-ipv6 \
     --disable-debug \
-    --without-pear && \
+    --without-pear \
+    --with-mcrypt && \
     make && make install && \
 #Install php-fpm
     cd /home/nginx-php/php-$PHP_VERSION && \
