@@ -33,6 +33,7 @@ RUN set -x && \
     libmcrypt-devel \
     openssh-server \
 	bzip2-devel	\
+    libzip \
     python-setuptools && \
 #Add user
 	mkdir -p /server/phpextini && \
@@ -77,6 +78,7 @@ RUN set -x && \
     --with-xmlrpc \
     --with-mhash \
 	--with-bz2	\
+    --with-libzip \
     --enable-fpm \
     --enable-xml \
     --enable-shmop \
