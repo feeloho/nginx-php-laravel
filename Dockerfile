@@ -33,8 +33,15 @@ RUN set -x && \
     libmcrypt-devel \
     openssh-server \
 	bzip2-devel	\
-    libzip \
     python-setuptools && \
+## Install extenstion --with-libzip   
+    wget https://nih.at/libzip/libzip-1.2.0.tar.gz \
+    tar -zxf libzip-1.2.0.tar.gz \
+    rm -rf libzip-1.2.0.tar.gz \
+    cd libzip-1.2.0 \
+    ./configure \
+    make \
+    make install && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
