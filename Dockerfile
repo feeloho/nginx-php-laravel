@@ -13,8 +13,6 @@ RUN set -x && \
     autoconf \
     automake \
     libtool \
-    wget \
-    tar \
     make \
     cmake && \
 #Install PHP library
@@ -37,13 +35,11 @@ RUN set -x && \
 	bzip2-devel	\
     python-setuptools && \
 ## Install extenstion --with-libzip   
-    wget https://nih.at/libzip/libzip-1.2.0.tar.gz \
-    tar -zxf libzip-1.2.0.tar.gz \
-    rm -rf libzip-1.2.0.tar.gz \
-    cd libzip-1.2.0 \
+    mkdir -p /home/libzip && cd $_ && \
+    curl -Lk https://nih.at/libzip/libzip-1.2.0.tar.gz | gunzip | tar x -C /home/libzip && \
+    cd /home/libzip/libzip-1.2.0 \
     ./configure \
-    make \
-    make install && \
+    make && make install && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
