@@ -14,6 +14,7 @@ RUN set -x && \
     automake \
     libtool \
     make \
+    libzip \
     cmake && \
 #Install PHP library
 ## libmcrypt-devel DIY
@@ -34,12 +35,12 @@ RUN set -x && \
     openssh-server \
 	bzip2-devel	\
     python-setuptools && \
-## Install extenstion --with-libzip   
-    mkdir -p /home/libzip && cd $_ && \
-    curl -Lk https://nih.at/libzip/libzip-1.2.0.tar.gz | gunzip | tar x -C /home/libzip && \
-    cd /home/libzip/libzip-1.2.0 && \
-    ./configure && \
-    make && make install && \
+# ## Install extenstion --with-libzip   
+#     mkdir -p /home/libzip && cd $_ && \
+#     curl -Lk https://nih.at/libzip/libzip-1.2.0.tar.gz | gunzip | tar x -C /home/libzip && \
+#     cd /home/libzip/libzip-1.2.0 && \
+#     ./configure && \
+#     make && make install && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
