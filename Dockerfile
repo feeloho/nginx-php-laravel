@@ -34,15 +34,6 @@ RUN set -x && \
     openssh-server \
 	bzip2-devel	\
     python-setuptools && \
-## Install extenstion --with-libzip   
-    mkdir -p /home/libzip && cd $_ && \
-    curl -Lk https://nih.at/libzip/libzip-1.2.0.tar.gz | gunzip | tar x -C /home/libzip && \
-    cd /home/libzip/libzip-1.2.0 && \
-    ./configure && \
-    make && make install && \
-##  Add search path in configure
-    echo '/usr/local/lib64 /usr/local/lib /usr/lib /usr/lib64' >> /etc/ld.so.conf && \
-    ldconfig -v && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
@@ -86,7 +77,6 @@ RUN set -x && \
     --with-xmlrpc \
     --with-mhash \
 	--with-bz2	\
-    --with-libzip \
     --enable-fpm \
     --enable-xml \
     --enable-shmop \
