@@ -40,6 +40,9 @@ RUN set -x && \
     cd /home/libzip/libzip-1.2.0 && \
     ./configure && \
     make && make install && \
+##  Add search path in configure
+    echo '/usr/local/lib64 /usr/local/lib /usr/lib /usr/lib64' >> /etc/ld.so.conf && \
+    ldconfig -v && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
