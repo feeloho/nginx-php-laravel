@@ -38,7 +38,7 @@ RUN set -x && \
     mkdir -p /home/libzip && cd $_ && \
     curl -Lk https://nih.at/libzip/libzip-1.2.0.tar.gz | gunzip | tar x -C /home/libzip && \
     cd /home/libzip/libzip-1.2.0 && \
-    ./configure \
+    ./configure && \
     make && make install && \
 #Add user
 	mkdir -p /server/phpextini && \
