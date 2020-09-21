@@ -13,8 +13,8 @@ RUN set -x && \
     autoconf \
     automake \
     libtool \
+    libzip-devel \
     make \
-    libzip \
     cmake && \
 #Install PHP library
 ## libmcrypt-devel DIY
