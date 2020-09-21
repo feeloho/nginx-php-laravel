@@ -35,14 +35,6 @@ RUN set -x && \
 	bzip2-devel	\
     wget \
     python-setuptools && \
-## Install extenstion --with-libzip   
-    wget https://nih.at/libzip/libzip-1.2.0.tar.gz \
-    tar -zxf libzip-1.2.0.tar.gz \
-    rm -rf libzip-1.2.0.tar.gz \
-    cd libzip-1.2.0 \
-    ./configure \
-    make \
-    make install && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
@@ -86,7 +78,6 @@ RUN set -x && \
     --with-xmlrpc \
     --with-mhash \
 	--with-bz2	\
-    --with-libzip \
     --enable-fpm \
     --enable-xml \
     --enable-shmop \
