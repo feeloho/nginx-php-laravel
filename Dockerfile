@@ -37,7 +37,7 @@ RUN set -x && \
 ## Install extenstion --with-libzip   
     mkdir -p /home/libzip && cd $_ && \
     curl -Lk https://nih.at/libzip/libzip-1.2.0.tar.gz | gunzip | tar x -C /home/libzip && \
-    cd /home/libzip/libzip-1.2.0 \
+    cd /home/libzip/libzip-1.2.0 &&\
     ./configure \
     make && make install && \
 #Add user
