@@ -13,6 +13,8 @@ RUN set -x && \
     autoconf \
     automake \
     libtool \
+    wget \
+    tar \
     make \
     cmake && \
 #Install PHP library
@@ -33,7 +35,6 @@ RUN set -x && \
     libmcrypt-devel \
     openssh-server \
 	bzip2-devel	\
-    wget \
     python-setuptools && \
 ## Install extenstion --with-libzip   
     wget https://nih.at/libzip/libzip-1.2.0.tar.gz \
