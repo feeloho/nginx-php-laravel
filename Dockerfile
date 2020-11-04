@@ -60,8 +60,8 @@ RUN set -x && \
 	cp $NGINX_PATH/sbin/nginx /usr/local/bin/nginx && \
 # Download phpunit
     mkdir -p /home/nginx-php/phpunit-$PHPUNIT_VERSION && \
-    cd /home/nginx-php/phpunit-$PHPUNIT_VERSION \
-    wget https://phar.phpunit.de/phpunit-$PHPUNIT_VERSION.phar \
+    cd /home/nginx-php/phpunit-$PHPUNIT_VERSION && \
+    wget https://phar.phpunit.de/phpunit-$PHPUNIT_VERSION.phar  &&\
     chmod +x phpunit-$PHPUNIT_VERSION.phar && \
     mv phpunit-$PHPUNIT_VERSION.phar /usr/local/bin/phpunit && \
 #Make install php
