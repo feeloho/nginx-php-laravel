@@ -1,8 +1,9 @@
 FROM centos:7
-MAINTAINER bY feeloho <79534505@qq.com>
+MAINTAINER By feeloho <79534505@qq.com>
 
 ENV NGINX_VERSION 1.15.3
 ENV PHP_VERSION 7.2.9
+ENV PHPUNIT_VERSION 9.4.2
 ENV PHP_PATH /server/php
 ENV NGINX_PATH /server/nginx
 ENV LOG_PATH /var/log
@@ -57,6 +58,11 @@ RUN set -x && \
     --with-http_gzip_static_module && \
     make && make install && \
 	cp $NGINX_PATH/sbin/nginx /usr/local/bin/nginx && \
+# Download phpunit
+    mkdir -p /home/nginx-php/phpunit-$PHPUNIT_VERSION \
+    cd /home/nginx-php/phpunit-$PHPUNIT_VERSION \
+    wget https://phar.phpunit.de/phpunit-$PHPUNIT_VERSION.phar \
+    chmod +x phpunit-$PHPUNIT_VERSION.phar && mv phpunit-$PHPUNIT_VERSION.phar /usr/local/bin/phpunit\
 #Make install php
     cd /home/nginx-php/php-$PHP_VERSION && \      
     ./configure --prefix=$PHP_PATH \
