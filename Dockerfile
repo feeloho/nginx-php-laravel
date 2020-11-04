@@ -62,7 +62,8 @@ RUN set -x && \
     mkdir -p /home/nginx-php/phpunit-$PHPUNIT_VERSION \
     cd /home/nginx-php/phpunit-$PHPUNIT_VERSION \
     wget https://phar.phpunit.de/phpunit-$PHPUNIT_VERSION.phar \
-    chmod +x phpunit-$PHPUNIT_VERSION.phar && mv phpunit-$PHPUNIT_VERSION.phar /usr/local/bin/phpunit\
+    chmod +x phpunit-$PHPUNIT_VERSION.phar && \
+    mv phpunit-$PHPUNIT_VERSION.phar /usr/local/bin/phpunit \
 #Make install php
     cd /home/nginx-php/php-$PHP_VERSION && \      
     ./configure --prefix=$PHP_PATH \
