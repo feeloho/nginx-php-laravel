@@ -1,6 +1,7 @@
 FROM centos:7
 MAINTAINER bY feeloho <79534505@qq.com>
 
+
 ENV NGINX_VERSION 1.15.3
 ENV PHP_VERSION 7.0.27
 ENV PHP_PATH /server/php
