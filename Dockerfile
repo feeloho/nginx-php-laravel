@@ -36,6 +36,7 @@ RUN set -x && \
 	bzip2-devel	\
     wget \
     python-setuptools \
+    oniguruma-devel \
     sqlite-devel && \
 #Add user
 	mkdir -p /server/phpextini && \
