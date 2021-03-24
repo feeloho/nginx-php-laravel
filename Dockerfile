@@ -35,7 +35,8 @@ RUN set -x && \
     openssh-server \
 	bzip2-devel	\
     wget \
-    python-setuptools && \
+    python-setuptools \
+    sqlite-devel && \
 #Add user
 	mkdir -p /server/phpextini && \
 	mkdir -p /server/phpextfile && \
