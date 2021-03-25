@@ -37,7 +37,6 @@ RUN set -x && \
     wget \
     python-setuptools \
     oniguruma-devel \
-    php-gd \
     sqlite-devel && \
 #Add user
 	mkdir -p /server/phpextini && \
@@ -67,6 +66,38 @@ RUN set -x && \
     wget https://phar.phpunit.de/phpunit-$PHPUNIT_VERSION.phar  &&\
     chmod +x phpunit-$PHPUNIT_VERSION.phar && \
     mv phpunit-$PHPUNIT_VERSION.phar /usr/local/bin/phpunit && \
+# php gd
+    mkdir -p /home/php-gd-extend && \
+    ## zlib
+    cd /home/php-gd-extend && \
+    wget http://www.zlib.net/zlib-1.2.11.tar.gz && \
+    tar -zxvf zlib-1.2.11.tar.gz && \
+    cd zlib-1.2.11 && \
+    ./configure --prefix=/usr/local/bin/zlib && \
+    make && make install && \
+    ## freetype
+    cd /home/php-gd-extend && \
+    wget https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz && \
+    tar -zxvf freetype-2.9.tar.gz && \
+    cd freetype-2.9 && \
+    ./configure --prefix=/usr/local/bin/freetype && \
+    make && make install && \
+    ## libpng
+    cd /home/php-gd-extend && \
+    wget https://nchc.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.xz && \
+    tar -zxvf libpng-1.6.37.tar.xz && \
+    cd libpng-1.6.37 && \
+    ./configure --prefix=/usr/local/bin/libpng  && \
+    make && make install && \
+    ## jpegsrc
+    cd /home/php-gd-extend && \
+    wget  http://www.ijg.org/files/jpegsrc.v9d.tar.gz && \
+    tar -zxvf jpegsrc.v9d.tar.gz && \
+    cd jpeg-9d && \
+    ./configure --prefix=/usr/local/bin/libjpeg --enable-shared && \
+    make && make install && \
+# delete php dg install files
+    rm -rf /home/php-gd-extend && \
 #Make install php
     cd /home/nginx-php/php-$PHP_VERSION && \      
     ./configure --prefix=$PHP_PATH \
@@ -77,17 +108,18 @@ RUN set -x && \
     --with-mysqli \
     --with-pdo-mysql \
     --with-openssl \
-    --with-gd \
     --with-iconv \
     --with-zlib \
     --with-gettext \
     --with-curl \
-    --with-png-dir \
-    --with-jpeg-dir \
-    --with-freetype-dir \
+    --with-png-dir=/usr/local/bin/libpng \
+    --with-jpeg-dir=/usr/local/bin/libjpeg  \
+    --with-freetype-dir=/usr/local/bin/freetype \
+    --with-zlib-dir=/usr/local/bin/zlib \    
     --with-xmlrpc \
     --with-mhash \
 	--with-bz2	\
+    --with-gd \
     --enable-fpm \
     --enable-xml \
     --enable-shmop \
