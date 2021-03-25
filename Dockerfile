@@ -142,6 +142,8 @@ RUN set -x && \
     --enable-ipv6 \
     --disable-debug \
     --without-pear && \
+    --enable-gd && \
+    --enable-gd-jis-conv &&\
     make && make install && \
 #Install php-fpm
     cd /home/nginx-php/php-$PHP_VERSION && \
