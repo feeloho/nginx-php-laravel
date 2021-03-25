@@ -7,7 +7,7 @@ Nginx and PHP and Laravel for Docker
 
 Nginx:  **1.15.3**
 
-php:  **7.2.9**
+php:  **7.4.16**
 
 composer:  **1.7.3**
 
