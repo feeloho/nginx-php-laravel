@@ -84,7 +84,7 @@ RUN set -x && \
     make && make install && \
     ## libpng
     cd /home/php-gd-extend && \
-    wget https://nchc.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.xz && \
+    wget https://nchc.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.gz && \
     tar -zxvf libpng-1.6.37.tar.gz && \
     cd libpng-1.6.37 && \
     ./configure --prefix=/usr/local/bin/libpng  && \
