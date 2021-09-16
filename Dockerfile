@@ -119,7 +119,10 @@ RUN set -x && \
     --with-xmlrpc \
     --with-mhash \
 	--with-bz2	\
-    --with-gd \
+    --with-jpeg-dir=/user/local/libjpeg \
+    --with-png-dir=/user/local/libpng \
+    --with-freetype-dir=/user/local/freetype \
+    --with-zlib-dir=/user/local/zlib \
     --enable-fpm \
     --enable-xml \
     --enable-shmop \
@@ -142,8 +145,7 @@ RUN set -x && \
     --enable-ipv6 \
     --disable-debug \
     --without-pear \
-    --enable-gd \
-    --enable-gd-jis-conv && \
+    --enable-gd && \
     make && make install && \
 #Install php-fpm
     cd /home/nginx-php/php-$PHP_VERSION && \
